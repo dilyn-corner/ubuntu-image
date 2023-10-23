@@ -430,9 +430,9 @@ func TestPrepareGadgetTree(t *testing.T) {
 		err := stateMachine.makeTemporaryDirectories()
 		asserter.AssertErrNil(err, true)
 
-		// place a test gadget tree in the  scratch directory so we don't have to build one
+		// place a test gadget tree in the scratch directory so we don't have to build one
 		gadgetSource := filepath.Join("testdata", "gadget_tree")
-		gadgetDest := filepath.Join(stateMachine.tempDirs.scratch, "gadget")
+		gadgetDest := filepath.Join(stateMachine.tempDirs.scratch, "gadget", "install")
 		err = osutil.CopySpecialFile(gadgetSource, gadgetDest)
 		asserter.AssertErrNil(err, true)
 
@@ -506,7 +506,7 @@ func TestFailedPrepareGadgetTree(t *testing.T) {
 
 		// place a test gadget tree in the  scratch directory so we don't have to build one
 		gadgetSource := filepath.Join("testdata", "gadget_tree")
-		gadgetDest := filepath.Join(stateMachine.tempDirs.scratch, "gadget")
+		gadgetDest := filepath.Join(stateMachine.tempDirs.scratch, "gadget", "install")
 		err = osutil.CopySpecialFile(gadgetSource, gadgetDest)
 		asserter.AssertErrNil(err, true)
 
@@ -4243,7 +4243,7 @@ func TestFailedUpdateBootloader(t *testing.T) {
 		// place a test gadget tree in the scratch directory so we don't
 		// have to build one
 		gadgetSource := filepath.Join("testdata", "gadget_tree")
-		gadgetDest := filepath.Join(stateMachine.tempDirs.scratch, "gadget")
+		gadgetDest := filepath.Join(stateMachine.tempDirs.scratch, "gadget", "install")
 		err = osutil.CopySpecialFile(gadgetSource, gadgetDest)
 		asserter.AssertErrNil(err, true)
 		// also copy gadget.yaml to the root of the scratch/gadget dir
@@ -4302,7 +4302,7 @@ func TestUnsupportedBootloader(t *testing.T) {
 		// place a test gadget tree in the scratch directory so we don't
 		// have to build one
 		gadgetSource := filepath.Join("testdata", "gadget_tree")
-		gadgetDest := filepath.Join(stateMachine.tempDirs.scratch, "gadget")
+		gadgetDest := filepath.Join(stateMachine.tempDirs.scratch, "gadget", "install")
 		err = osutil.CopySpecialFile(gadgetSource, gadgetDest)
 		asserter.AssertErrNil(err, true)
 		// also copy gadget.yaml to the root of the scratc/gadget dir
