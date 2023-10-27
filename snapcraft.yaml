@@ -30,9 +30,6 @@ parts:
     source-type: git
     build-packages:
       - golang-go
-      - fdisk
-      - gdisk
-      - mtools
       - python3-docutils
     stage-packages:
       - fdisk
