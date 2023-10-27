@@ -38,7 +38,6 @@ parts:
       - debootstrap
       - gpg
       - germinate
-      - mtools
       - make
       - kpartx
       - qemu-utils
@@ -59,3 +58,16 @@ parts:
       # Create a symbolic link to /usr/lib/<arch> where libfakeroot will live
       cd $SNAPCRAFT_PART_INSTALL/usr/lib/
       ln -s ${SNAPCRAFT_ARCH_TRIPLET} lib-arch
+
+  # When building a Classic image using a gadget snap which writes files to a bare partition, mcopy is used.
+  # There is a regression in mtools 4.0.32 which results in mcopy failing just
+  # in case the target directory does not already exist. 4.0.32 is available in
+  # 22.04 and 4.0.43 is available in 23.10, so when the core24 base is released
+  # mtools can be readded as a stage-package.
+  mtools:
+    plugin: autotools
+    source: https://ftp.gnu.org/gnu/mtools/mtools-4.0.43.tar.bz2
+    autotools-configure-parameters:
+      - --prefix=/usr
+    stage:
+      - -usr/share
