@@ -76,3 +76,5 @@ require (
 	github.com/snapcore/go-gettext v0.0.0-20230721153050-9082cdc2db05 // indirect
 	gopkg.in/macaroon.v1 v1.0.0 // indirect
 )
+
+replace github.com/snapcore/snapd => github.com/dilyn-corner/snapd v0.0.0-20240809204020-c52793cd2ace
